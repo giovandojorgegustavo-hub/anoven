@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* ================================================================
+   * Paleta: Editorial cálido
+   * "Paper" = superficies (la página del libro)
+   * "Ink" = texto y contrastes
+   * "Accent" = terracotta (la marca, la acción primaria)
+   * "Leaf" = feedback positivo, alineado a la paleta
+   * ================================================================ */
+
+  --color-paper: #FAF7F2;
+  --color-paper-dim: #F1EBE0;
+  --color-paper-deep: #E5DDD0;
+
+  --color-ink: #1F1B16;
+  --color-ink-soft: #5C534A;
+  --color-ink-muted: #8E867C;
+
+  --color-rule: #DCD2C1;
+  --color-rule-strong: #BFB39E;
+
+  --color-accent: #B85C4A;
+  --color-accent-hover: #9F4838;
+  --color-accent-soft: #F2DCD3;
+  --color-accent-ink: #FAF7F2;
+
+  --color-leaf: #6F8E64;
+  --color-leaf-soft: #E2EAD9;
+  --color-leaf-border: #C8D8B8;
+
+  /* Fonts (Next.js inyecta los CSS variables vía next/font) */
+  --font-serif: var(--font-crimson);
+  --font-sans: var(--font-inter);
+}
+
+@layer base {
+  html {
+    /* Anoven es editorial cálido — SIEMPRE light. Sin esto, Chrome con
+     * "Auto Dark Mode for Web Contents" invierte nuestros colores cremas
+     * a algo oscuro que no es ni light ni dark, solo feo. */
+    color-scheme: light;
+  }
+  html,
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "kern", "liga";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  ::selection {
+    background-color: var(--color-accent-soft);
+    color: var(--color-ink);
+  }
+
+  /* Polish: transitions suaves por default en elementos interactivos */
+  button,
+  a,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    transition-property: background-color, border-color, color, box-shadow, opacity, transform;
+    transition-duration: 160ms;
+    transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  /* Scrollbar más sutil */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-rule);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-rule-strong);
+  }
+}
+
+@layer utilities {
+  /* Polish: fade-in para mensajes nuevos, cards, panels */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 220ms cubic-bezier(0.2, 0, 0, 1) both;
+  }
+
+  @keyframes pulseDot {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  .animate-pulse-dot {
+    animation: pulseDot 1.2s ease-in-out infinite;
+  }
+
+  /* Shadow custom — sutil para reposo, más marcado en hover */
+  .shadow-card {
+    box-shadow:
+      0 1px 2px 0 rgba(31, 27, 22, 0.04),
+      0 1px 1px 0 rgba(31, 27, 22, 0.03);
+  }
+  .shadow-card-hover {
+    box-shadow:
+      0 4px 8px -2px rgba(31, 27, 22, 0.08),
+      0 2px 4px -1px rgba(31, 27, 22, 0.04);
+  }
+}

@@ -1,0 +1,63 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# === Node / Next.js ===
+node_modules/
+.next/
+out/
+dist/
+build/
+.npm
+.eslintcache
+*.tsbuildinfo
+next-env.d.ts
+
+# === Environment / Secrets ===
+.env
+.env.local
+.env.production
+.env.*.local
+.env*.bak*
+
+# === Databases locales ===
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+# === Backups (prevenir el patrón a futuro) ===
+*.bak
+*.bak-*
+*.backup
+
+# === Storage uploads (user content) ===
+storage/uploads/
+storage/temp/
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === IDEs ===
+.vscode/
+.idea/
+*.swp
+*~
+
+# === Logs ===
+*.log
+logs/
+
+# === Temporales ===
+*.tmp
+.cache/

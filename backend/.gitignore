@@ -1,0 +1,25 @@
+# Secretos
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# SQLite (BD local de dev)
+*.db
+*.sqlite
+
+# Migraciones generadas
+migrations/versions/__pycache__/
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
